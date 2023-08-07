@@ -1,0 +1,140 @@
+locals {
+  default_tags = {
+    Environment = "prod"
+    ManagedBy   = "terraform"
+    CostCenter  = "1"
+    Application = "OWASP-Juice-Shop"
+    Owner       = "Dameda"
+  }
+
+  #tfstate-bucket-prod-ec1-owasp-07082023
+
+  resource_suffix = join("-", ["ec1", "owasp"])
+  aws_account_id  = ""
+  ami_owner_id    = "679593333241"
+  suffix_az_a     = "prod-ec1a-owasp"
+  suffix_az_b     = "prod-ec1b-owasp"
+
+
+  subnets = [
+    {
+      name     = "pub-1"
+      type     = "public"
+      cidr     = "10.1.0.0/24"
+      vpc      = "prod"
+      rtb      = "inside"
+      main_rtb = false
+      az       = "eu-central-1a"
+      routes = [{
+        name      = "3"
+        cidr_dest = "0.0.0.0/0"
+        dest      = "nat"
+        vpc       = "external"
+        rtb       = "inside"
+        },
+        {
+          name      = "4"
+          cidr_dest = "10.2.0.0/16"
+          dest      = "tgw"
+          vpc       = "external"
+          rtb       = "inside"
+        },
+        {
+          name      = "5"
+          cidr_dest = "10.3.0.0/16"
+          dest      = "tgw"
+          vpc       = "external"
+          rtb       = "inside"
+      }]
+    },
+    {
+      name     = "priv-1"
+      type     = "private"
+      cidr     = "10.1.1.0/24"
+      vpc      = "prod"
+      rtb      = "database"
+      main_rtb = true
+      az       = "eu-central-1a"
+      routes = [{
+        name      = "7"
+        cidr_dest = "0.0.0.0/0"
+        dest      = "tgw"
+        vpc       = "db"
+        rtb       = "database"
+      }]
+    },
+    {
+      name     = "priv-2"
+      type     = "private"
+      cidr     = "10.1.2.0/24"
+      vpc      = "prod"
+      rtb      = ""
+      main_rtb = false
+      az       = "eu-central-1b"
+      routes = [{
+        name      = ""
+        cidr_dest = ""
+        dest      = ""
+        vpc       = ""
+        rtb       = ""
+      }]
+    }
+  ]
+
+  vpcs = {
+    prod = {
+      cidr = "10.1.0.0/16"
+    }
+  }
+
+  sg = {
+    app-sg = {
+      description = "Allow access for app vpc"
+      vpc         = "prod"
+      inbound_rules = {
+        http = {
+          description = "Allow HTTP"
+          from_port   = 80
+          to_port     = 80
+          protocol    = "tcp"
+          cidr_block  = "0.0.0.0/0"
+        },
+        https = {
+          description = "Allow HTTPS"
+          from_port   = 443
+          to_port     = 443
+          protocol    = "tcp"
+          cidr_block  = "0.0.0.0/0"
+        },
+        ssh = {
+          description = "Allow SSH"
+          from_port   = 22
+          to_port     = 22
+          protocol    = "tcp"
+          cidr_block  = "${var.my_ip}/32"
+        }
+      }
+    },
+    db-sg = {
+      description = "Allow access for public snet"
+      vpc         = "prod"
+      inbound_rules = {
+        # mysql = {
+        #   description     = "Allow MySQL/Aurora"
+        #   from_port       = 3306
+        #   to_port         = 3306
+        #   protocol        = "tcp"
+        #   security_groups = [aws_security_group.sg["app-sg"].id]
+        # },
+        ssh = {
+          description = "Allow SSH"
+          from_port   = 22
+          to_port     = 22
+          protocol    = "tcp"
+          cidr_block  = "${var.my_ip}/32"
+        }
+      }
+    }
+  }
+
+}
