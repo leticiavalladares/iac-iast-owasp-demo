@@ -2,7 +2,7 @@
 
 DIAGRAM_FOLDER="diagrams"
 DIAGRAM_NAME="main.png"
-MAIN_PIPELINE_FILE=""
+MAIN_PIPELINE_FILE="deploy-infra.yml"
 PRIVATE_REPOSITORY_OWNER="leticiavalladares"
 REPOSITORY_NAME="iac-iast-owasp-demo"
 PROJECT_DESC="IaC for IAST of OWASP Juice Shop app."
@@ -18,7 +18,7 @@ LAST_COMMIT_MSG=$(git rev-list --format=%B --max-count=1 ${commits[0]})
 
 if [ ! -f /README.md ]; then
     touch README.md
-    printf "[![CI/CD](https://github.com/$PRIVATE_REPOSITORY_OWNER/$REPOSITORY_NAME/actions/workflows/$MAIN_PIPELINE_FILE/badge.svg)]\
+    printf "[![Terraform deployment for IAST OWASP demo](https://github.com/$PRIVATE_REPOSITORY_OWNER/$REPOSITORY_NAME/actions/workflows/$MAIN_PIPELINE_FILE/badge.svg)]\
 (https://github.com/$PRIVATE_REPOSITORY_OWNER/$REPOSITORY_NAME/actions/workflows/$MAIN_PIPELINE_FILE) \
 \n# $PROJECT_TITLE
 \n## Description \
@@ -34,6 +34,10 @@ if [ ! -f /README.md ]; then
 \n- tfstate S3 bucket with DynamoDB  \
 \n- Secrets in AWS Secrets Manager to store database user and password \
 \n-  \
+\n### Requirements before deploying locally \
+\n- Add local machine IP address as a variable in your environement  \
+\n### Requirements before deploying through GitHub Actions \
+\n- Add local machine IP address as a GitHub Secret in your repository \
 \n### Steps for Unix systems \n \
 1. Connect to your AWS account with short-term credentials from AWS IAM<br>\
 \n \`aws configure\` \n \

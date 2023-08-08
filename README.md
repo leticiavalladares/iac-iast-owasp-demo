@@ -1,4 +1,4 @@
-[![CI/CD](https://github.com/leticiavalladares/iac-iast-owasp-demo/actions/workflows//badge.svg)](https://github.com/leticiavalladares/iac-iast-owasp-demo/actions/workflows/) 
+[![Terraform deployment for IAST OWASP demo](https://github.com/leticiavalladares/iac-iast-owasp-demo/actions/workflows/deploy-infra.yml/badge.svg)](https://github.com/leticiavalladares/iac-iast-owasp-demo/actions/workflows/deploy-infra.yml) 
 # IAST demo using OpenTelemetry
 
 ### Description 
@@ -14,6 +14,10 @@ IaC for IAST of OWASP Juice Shop app.
 - tfstate S3 bucket with DynamoDB  
 - Secrets in AWS Secrets Manager to store database user and password 
 -  
+#### Requirements before deploying locally 
+- Add local machine IP address as a variable in your environement  
+#### Requirements before deploying through GitHub Actions 
+- Add local machine IP address as a GitHub Secret in your repository 
 #### Steps for Unix systems 
  1. Connect to your AWS account with short-term credentials from AWS IAM<br>
  `aws configure` 
@@ -98,11 +102,11 @@ No modules.
 No outputs.
 <!-- END_TF_DOCS -->
 ### Five last commits
-9ceb1aa - SSM activation through tf and public ip with ssh for webserver<br>
-cc709cd - Add OpenID identity setup for GitHub Actions<br>
-8e1df32 - Preview<br>
-95d62f3 - Correct code block for AWS CLI configuration<br>
-ed71194 - Update README with template script<br>
+8333606 - Ignore push of some file when running the pipeline<br>
+8bc788b - Ignore push of some file when running the pipeline<br>
+280ff4c - Add TF_VAR_my_ip env var to pipeline<br>
+d4c00de - Add my_ip env var to pipeline<br>
+fc6e417 - Add terraform apply and correct plan in pipeline<br>
 
 ### README Activity Log
-This README file was updated on Tue Aug  8 17:36:43 CEST 2023 by Leticia Valladares on this [commit](https://github.com/leticiavalladares/iac-iast-owasp-demo/commit/9ceb1aabc44e17e82cedd98407b047efade386f0)
+This README file was updated on Tue Aug  8 18:24:29 CEST 2023 by Leticia Valladares on this [commit](https://github.com/leticiavalladares/iac-iast-owasp-demo/commit/83336060317fa2b268e25808f2866ca7d40891e6)
