@@ -4,6 +4,7 @@ resource "aws_instance" "app_server" {
   iam_instance_profile   = aws_iam_instance_profile.instance_profile.name
   subnet_id              = aws_subnet.subnet["pub-1"].id
   vpc_security_group_ids = [aws_security_group.sg["app-sg"].id]
+  key_name               = "talent-academy-git.pub" 
 
   user_data = templatefile("${path.module}/bootstrap/user-data.sh",
     {
@@ -13,7 +14,7 @@ resource "aws_instance" "app_server" {
   })
 
   tags = {
-    Name = "ec2-${local.resource_suffix}"
+    Name = "app-server-${local.resource_suffix}"
   }
 
   depends_on = [

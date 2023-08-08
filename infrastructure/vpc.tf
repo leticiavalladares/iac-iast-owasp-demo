@@ -15,6 +15,7 @@ resource "aws_subnet" "subnet" {
   vpc_id            = aws_vpc.vpc[each.value.vpc].id
   cidr_block        = each.value.cidr
   availability_zone = each.value.az
+  map_public_ip_on_launch = each.value.pub_ip
 
   tags = {
     Name = "snet-${each.value.name}-${local.resource_suffix}"

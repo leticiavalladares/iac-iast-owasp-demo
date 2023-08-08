@@ -25,6 +25,7 @@ locals {
       rtb      = "pub-1"
       main_rtb = true
       az       = "eu-central-1a"
+      pub_ip   = true
       routes = [{
         name      = "1"
         cidr_dest = "0.0.0.0/0"
@@ -41,6 +42,7 @@ locals {
       rtb      = "priv-1"
       main_rtb = false
       az       = "eu-central-1a"
+      pub_ip   = false
       routes = [{
         name      = "2"
         cidr_dest = "0.0.0.0/0"
@@ -57,6 +59,7 @@ locals {
       rtb      = "priv-2"
       main_rtb = false
       az       = "eu-central-1b"
+      pub_ip   = false
       routes = [{
         name      = "3"
         cidr_dest = "0.0.0.0/0"

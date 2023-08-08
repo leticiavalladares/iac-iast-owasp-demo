@@ -41,15 +41,15 @@ resource "aws_iam_role" "instance_role" {
 # EOF
 # }
 
-resource "aws_iam_role_policy_attachment" "SSMPolicy" {
+resource "aws_iam_role_policy_attachment" "ssm_policy" {
   role       = aws_iam_role.instance_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
-resource "aws_ssm_activation" "foo" {
-  name               = "test_ssm_activation"
-  description        = "Test"
+resource "aws_ssm_activation" "ssm_activation" {
+  name               = "ssm_activation"
+  description        = "SSM activation through Terraform"
   iam_role           = aws_iam_role.instance_role.name
   registration_limit = "5"
-  depends_on         = [aws_iam_role_policy_attachment.SSMPolicy]
+  depends_on         = [aws_iam_role_policy_attachment.ssm_policy]
 }
