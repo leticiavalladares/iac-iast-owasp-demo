@@ -1,5 +1,10 @@
 name: Terraform deployment for IAST OWASP demo
 on: [push]
+  paths-ignore:
+    - '**/README.md'
+    - '**/readmetemplate.sh'
+    - '**/.gitignore'
+    - '**/diagrams/**'
 jobs:
   terraform:
     runs-on: ubuntu-latest
