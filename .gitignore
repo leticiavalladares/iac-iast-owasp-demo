@@ -5,7 +5,6 @@
 .terraform.lock.hcl
 .DS_Store
 README.md-e
-**/iam-openid.tf
 
 # .tfstate files
 *.tfstate
