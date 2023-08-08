@@ -26,12 +26,12 @@ jobs:
 
       - name: Terraform plan
         env:
-          my_ip: ${{ secrets.MY_IP }}
+          TF_VAR_my_ip: ${{ secrets.TF_VAR_MY_IP }}
         run: terraform plan
         working-directory: ./infrastructure
 
       - name: Terraform apply
         env:
-          my_ip: ${{ secrets.MY_IP }}
+          TF_VAR_my_ip: ${{ secrets.TF_VAR_MY_IP }}
         run: terraform apply -auto-approve
         working-directory: ./infrastructure
