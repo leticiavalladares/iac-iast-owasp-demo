@@ -1,5 +1,5 @@
 resource "aws_instance" "app_server" {
-  ami                    = data.aws_ami.ubuntu_image.id
+  ami                    = data.aws_ami.amazon_linux_image.id
   instance_type          = "t3.medium"
   iam_instance_profile   = aws_iam_instance_profile.instance_profile.name
   subnet_id              = aws_subnet.subnet["pub-1"].id

@@ -1,12 +1,12 @@
 data "aws_region" "current_region" {}
 
-data "aws_ami" "ubuntu_image" {
-  owners      = ["674577138207"]
+data "aws_ami" "amazon_linux_image" {
+  owners      = ["137112412989"]
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["Ubuntu Server 22.04 LTS (HVM) SSD Volume Type by Venv"]
+    values = ["amzn2-ami-kernel-5.10-hvm-2.0.20230727.0-x86_64-gp2"]
   }
 }
 
