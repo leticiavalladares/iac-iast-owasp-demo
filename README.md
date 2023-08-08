@@ -18,12 +18,12 @@ IaC for IAST of OWASP Juice Shop app.
  1. Connect to your AWS account with short-term credentials from AWS IAM<br>
  `aws configure` 
  
- `
+```
 AWS Access Key ID [None]: <YOUR_ACCESS_KEY>
 AWS Secret Access Key [None]: <YOUR_SECRET_ACCESS_KEY>
 Default region name [None]: <REGION>
 Default output format [None]: <PREFERRED_FORMAT_SUCH_AS_JSON>
-` 
+``` 
  
  2. Clone this repository in your local machine <br>
  `git clone <HTTPS/SSH>` 
@@ -88,8 +88,9 @@ No modules.
 No outputs.
 <!-- END_TF_DOCS -->
 ### Five last commits
+ed71194 - Update README with template script<br>
 f54116f - Deploy VPC with subnets and sec groups<br>
 8e9d5af - Initial commit<br>
 
 ### README Activity Log
-This README file was updated on Tue Aug  8 10:34:23 CEST 2023 by Leticia Valladares on this [commit](https://github.com/leticiavalladares/iac-iast-owasp-demo/commit/f54116f8e3f15c94844e139d92eee1ea88693022)
+This README file was updated on Tue Aug  8 10:43:23 CEST 2023 by Leticia Valladares on this [commit](https://github.com/leticiavalladares/iac-iast-owasp-demo/commit/ed7119407f89997e6e129fd180d53a13f7962701)
