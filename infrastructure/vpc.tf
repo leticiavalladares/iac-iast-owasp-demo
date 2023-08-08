@@ -57,7 +57,7 @@ resource "aws_route_table" "rtb" {
   }
 
   tags = {
-    Name = "rtb-${each.key}-subnet"
+    Name = "rtb-${each.key}-snet"
   }
   depends_on = [
     aws_vpc.vpc

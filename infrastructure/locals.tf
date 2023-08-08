@@ -22,29 +22,15 @@ locals {
       type     = "public"
       cidr     = "10.1.0.0/24"
       vpc      = "prod"
-      rtb      = "inside"
-      main_rtb = false
+      rtb      = "pub-1"
+      main_rtb = true
       az       = "eu-central-1a"
       routes = [{
-        name      = "3"
+        name      = "1"
         cidr_dest = "0.0.0.0/0"
-        dest      = "nat"
-        vpc       = "external"
-        rtb       = "inside"
-        },
-        {
-          name      = "4"
-          cidr_dest = "10.2.0.0/16"
-          dest      = "tgw"
-          vpc       = "external"
-          rtb       = "inside"
-        },
-        {
-          name      = "5"
-          cidr_dest = "10.3.0.0/16"
-          dest      = "tgw"
-          vpc       = "external"
-          rtb       = "inside"
+        dest      = "igw"
+        vpc       = "prod"
+        rtb       = "pub-1"
       }]
     },
     {
@@ -52,15 +38,15 @@ locals {
       type     = "private"
       cidr     = "10.1.1.0/24"
       vpc      = "prod"
-      rtb      = "database"
-      main_rtb = true
+      rtb      = "priv-1"
+      main_rtb = false
       az       = "eu-central-1a"
       routes = [{
-        name      = "7"
+        name      = "2"
         cidr_dest = "0.0.0.0/0"
-        dest      = "tgw"
-        vpc       = "db"
-        rtb       = "database"
+        dest      = "nat"
+        vpc       = "prod"
+        rtb       = "priv-1"
       }]
     },
     {
@@ -68,15 +54,15 @@ locals {
       type     = "private"
       cidr     = "10.1.2.0/24"
       vpc      = "prod"
-      rtb      = ""
+      rtb      = "priv-2"
       main_rtb = false
       az       = "eu-central-1b"
       routes = [{
-        name      = ""
-        cidr_dest = ""
-        dest      = ""
-        vpc       = ""
-        rtb       = ""
+        name      = "3"
+        cidr_dest = "0.0.0.0/0"
+        dest      = "nat"
+        vpc       = "prod"
+        rtb       = "priv-2"
       }]
     }
   ]

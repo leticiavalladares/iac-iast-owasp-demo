@@ -15,7 +15,7 @@ resource "aws_nat_gateway" "nat_external_vpc" {
   subnet_id     = aws_subnet.subnet["pub-1"].id
 
   tags = {
-    Name = "appnat-${local.resource_suffix}"
+    Name = "ngw-${local.resource_suffix}"
   }
 
   depends_on = [aws_internet_gateway.ig_external_vpc]

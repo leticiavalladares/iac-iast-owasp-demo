@@ -37,12 +37,12 @@ if [ ! -f /README.md ]; then
 \n### Steps for Unix systems \n \
 1. Connect to your AWS account with short-term credentials from AWS IAM<br>\
 \n \`aws configure\` \n \
-\n \```
+\n\`\`\`
 AWS Access Key ID [None]: <YOUR_ACCESS_KEY>
 AWS Secret Access Key [None]: <YOUR_SECRET_ACCESS_KEY>
 Default region name [None]: <REGION>
 Default output format [None]: <PREFERRED_FORMAT_SUCH_AS_JSON>
-\``` \n \
+\`\`\` \n \
 \n 2. Clone this repository in your local machine <br>\
 \n \`git clone <HTTPS/SSH>\` \n \
 \n 3. Go to the repository folder <br>\
