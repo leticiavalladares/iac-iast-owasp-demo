@@ -12,9 +12,9 @@ resource "aws_vpc" "vpc" {
 resource "aws_subnet" "subnet" {
   for_each = { for subnet, val in local.subnets : val.name => val }
 
-  vpc_id            = aws_vpc.vpc[each.value.vpc].id
-  cidr_block        = each.value.cidr
-  availability_zone = each.value.az
+  vpc_id                  = aws_vpc.vpc[each.value.vpc].id
+  cidr_block              = each.value.cidr
+  availability_zone       = each.value.az
   map_public_ip_on_launch = each.value.pub_ip
 
   tags = {

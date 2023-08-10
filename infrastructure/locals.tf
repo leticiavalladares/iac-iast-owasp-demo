@@ -126,4 +126,15 @@ locals {
     }
   }
 
+  appservers = {
+    app-server-sqlite = {
+      type      = "t3.medium"
+      user_data = "user-data-sqlite.sh"
+    },
+    app-server-mysql = {
+      type      = "t3.medium"
+      user_data = "user-data-mysql.sh"
+    }
+  }
+
 }
