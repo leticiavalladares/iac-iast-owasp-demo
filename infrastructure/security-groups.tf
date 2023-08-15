@@ -13,8 +13,8 @@ resource "aws_security_group" "sg" {
       from_port       = ingress.value.from_port
       to_port         = ingress.value.to_port
       protocol        = ingress.value.protocol
-      cidr_blocks     = lookup(ingress.value, ["cidr_block"], null)
-      security_groups = lookup(ingress.value, ["security_groups"], null)
+      cidr_blocks     = ingress.value.cidr_block ? [ingress.value.cidr_block] : null
+      security_groups = ingress.value.security_groups ? [ingress.value.security_groups] : null
     }
   }
 
