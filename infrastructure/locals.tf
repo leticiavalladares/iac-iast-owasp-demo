@@ -108,13 +108,13 @@ locals {
       description = "Allow access for public snet"
       vpc         = "prod"
       inbound_rules = {
-        # mysql = {
-        #   description     = "Allow MySQL/Aurora"
-        #   from_port       = 3306
-        #   to_port         = 3306
-        #   protocol        = "tcp"
-        #   security_groups = [aws_security_group.sg["app-sg"].id]
-        # },
+        mysql = {
+          description     = "Allow MySQL/Aurora"
+          from_port       = 3306
+          to_port         = 3306
+          protocol        = "tcp"
+          security_groups = ["sg-050bdc9c07c818225"] #[aws_security_group.sg["app-sg"].id]
+        },
         ssh = {
           description = "Allow SSH"
           from_port   = 22
