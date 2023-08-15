@@ -135,7 +135,7 @@ locals {
       user_data = "user-data-sqlite.sh"
     },
     app-server-mysql = {
-      type      = "m4.2xlarge"
+      type      = "m4.4xlarge"
       user_data = "user-data-mysql.sh"
     }
   }
