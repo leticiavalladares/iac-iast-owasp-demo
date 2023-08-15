@@ -132,7 +132,7 @@ locals {
       user_data = "user-data-sqlite.sh"
     },
     app-server-mysql = {
-      type      = "t3.large"
+      type      = "t3.xlarge"
       user_data = "user-data-mysql.sh"
     }
   }
