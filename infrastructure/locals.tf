@@ -87,6 +87,7 @@ locals {
           to_port         = 80
           protocol        = "tcp"
           cidr_block      = "0.0.0.0/0"
+          security_group  = ""
         },
         https = {
           description     = "Allow HTTPS"
@@ -94,6 +95,7 @@ locals {
           to_port         = 443
           protocol        = "tcp"
           cidr_block      = "0.0.0.0/0"
+          security_group  = ""
         },
         ssh = {
           description     = "Allow SSH"
@@ -101,6 +103,7 @@ locals {
           to_port         = 22
           protocol        = "tcp"
           cidr_block      = "${var.my_ip}/32"
+          security_group  = ""
         }
       }
     },
@@ -113,6 +116,7 @@ locals {
           from_port       = 3306
           to_port         = 3306
           protocol        = "tcp"
+          cidr_block      = ""
           security_group  = "sg-050bdc9c07c818225" #[aws_security_group.sg["app-sg"].id]
         },
         ssh = {
@@ -121,6 +125,7 @@ locals {
           to_port         = 22
           protocol        = "tcp"
           cidr_block      = "${var.my_ip}/32"
+          security_group  = ""
         }
       }
     }
