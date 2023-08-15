@@ -82,28 +82,28 @@ locals {
       vpc         = "prod"
       inbound_rules = {
         http = {
-          description     = "Allow HTTP"
-          from_port       = 80
-          to_port         = 80
-          protocol        = "tcp"
-          cidr_block      = "0.0.0.0/0"
-          security_group  = ""
+          description    = "Allow HTTP"
+          from_port      = 80
+          to_port        = 80
+          protocol       = "tcp"
+          cidr_block     = "0.0.0.0/0"
+          security_group = ""
         },
         https = {
-          description     = "Allow HTTPS"
-          from_port       = 443
-          to_port         = 443
-          protocol        = "tcp"
-          cidr_block      = "0.0.0.0/0"
-          security_group  = ""
+          description    = "Allow HTTPS"
+          from_port      = 443
+          to_port        = 443
+          protocol       = "tcp"
+          cidr_block     = "0.0.0.0/0"
+          security_group = ""
         },
         ssh = {
-          description     = "Allow SSH"
-          from_port       = 22
-          to_port         = 22
-          protocol        = "tcp"
-          cidr_block      = "${var.my_ip}/32"
-          security_group  = ""
+          description    = "Allow SSH"
+          from_port      = 22
+          to_port        = 22
+          protocol       = "tcp"
+          cidr_block     = "${var.my_ip}/32"
+          security_group = ""
         }
       }
     },
@@ -112,20 +112,20 @@ locals {
       vpc         = "prod"
       inbound_rules = {
         mysql = {
-          description     = "Allow MySQL/Aurora"
-          from_port       = 3306
-          to_port         = 3306
-          protocol        = "tcp"
-          cidr_block      = ""
-          security_group  = "sg-050bdc9c07c818225" #[aws_security_group.sg["app-sg"].id]
+          description    = "Allow MySQL/Aurora"
+          from_port      = 3306
+          to_port        = 3306
+          protocol       = "tcp"
+          cidr_block     = ""
+          security_group = "sg-050bdc9c07c818225" #[aws_security_group.sg["app-sg"].id]
         },
         ssh = {
-          description     = "Allow SSH"
-          from_port       = 22
-          to_port         = 22
-          protocol        = "tcp"
-          cidr_block      = "${var.my_ip}/32"
-          security_group  = ""
+          description    = "Allow SSH"
+          from_port      = 22
+          to_port        = 22
+          protocol       = "tcp"
+          cidr_block     = "${var.my_ip}/32"
+          security_group = ""
         }
       }
     }

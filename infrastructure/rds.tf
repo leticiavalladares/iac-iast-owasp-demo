@@ -1,13 +1,14 @@
 resource "aws_db_instance" "rds" {
-  allocated_storage    = 10
-  db_name              = "juiceshop"
-  engine               = "mysql"
-  engine_version       = "8.0.32"
-  instance_class       = "db.t3.small"
-  username             = jsondecode(nonsensitive(data.aws_secretsmanager_secret_version.db_secrets.secret_string))["MYSQL_USER"]
-  password             = jsondecode(nonsensitive(data.aws_secretsmanager_secret_version.db_secrets.secret_string))["MYSQL_PASSWORD"]
-  skip_final_snapshot  = true
-  db_subnet_group_name = aws_db_subnet_group.db_sg.name
+  allocated_storage      = 10
+  db_name                = "juiceshop"
+  engine                 = "mysql"
+  engine_version         = "8.0.32"
+  instance_class         = "db.t3.small"
+  username               = jsondecode(nonsensitive(data.aws_secretsmanager_secret_version.db_secrets.secret_string))["MYSQL_USER"]
+  password               = jsondecode(nonsensitive(data.aws_secretsmanager_secret_version.db_secrets.secret_string))["MYSQL_PASSWORD"]
+  skip_final_snapshot    = true
+  db_subnet_group_name   = aws_db_subnet_group.db_sg.name
+  vpc_security_group_ids = [aws_security_group.sg["db-sg"].id]
 
   tags = {
     Name = "db-${local.resource_suffix}"
