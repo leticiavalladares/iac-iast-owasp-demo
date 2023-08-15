@@ -113,7 +113,7 @@ locals {
           from_port       = 3306
           to_port         = 3306
           protocol        = "tcp"
-          security_groups = ["sg-050bdc9c07c818225"] #[aws_security_group.sg["app-sg"].id]
+          security_group  = "sg-050bdc9c07c818225" #[aws_security_group.sg["app-sg"].id]
         },
         ssh = {
           description     = "Allow SSH"
