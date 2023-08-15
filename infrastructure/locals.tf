@@ -82,25 +82,28 @@ locals {
       vpc         = "prod"
       inbound_rules = {
         http = {
-          description = "Allow HTTP"
-          from_port   = 80
-          to_port     = 80
-          protocol    = "tcp"
-          cidr_block  = "0.0.0.0/0"
+          description     = "Allow HTTP"
+          from_port       = 80
+          to_port         = 80
+          protocol        = "tcp"
+          cidr_block      = "0.0.0.0/0"
+          security_groups = ""
         },
         https = {
-          description = "Allow HTTPS"
-          from_port   = 443
-          to_port     = 443
-          protocol    = "tcp"
-          cidr_block  = "0.0.0.0/0"
+          description     = "Allow HTTPS"
+          from_port       = 443
+          to_port         = 443
+          protocol        = "tcp"
+          cidr_block      = "0.0.0.0/0"
+          security_groups = ""
         },
         ssh = {
-          description = "Allow SSH"
-          from_port   = 22
-          to_port     = 22
-          protocol    = "tcp"
-          cidr_block  = "${var.my_ip}/32"
+          description     = "Allow SSH"
+          from_port       = 22
+          to_port         = 22
+          protocol        = "tcp"
+          cidr_block      = "${var.my_ip}/32"
+          security_groups = ""
         }
       }
     },
@@ -114,13 +117,15 @@ locals {
           to_port         = 3306
           protocol        = "tcp"
           security_groups = ["sg-050bdc9c07c818225"] #[aws_security_group.sg["app-sg"].id]
+          cidr_block      = ""
         },
         ssh = {
-          description = "Allow SSH"
-          from_port   = 22
-          to_port     = 22
-          protocol    = "tcp"
-          cidr_block  = "${var.my_ip}/32"
+          description     = "Allow SSH"
+          from_port       = 22
+          to_port         = 22
+          protocol        = "tcp"
+          cidr_block      = "${var.my_ip}/32"
+          security_groups = ""
         }
       }
     }
