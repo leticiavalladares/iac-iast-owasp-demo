@@ -7,8 +7,6 @@ locals {
     Owner       = "Dameda"
   }
 
-  #tfstate-bucket-prod-ec1-owasp-07082023
-
   resource_suffix = join("-", ["ec1", "owasp"])
   aws_account_id  = ""
   ami_owner_id    = "679593333241"
@@ -137,7 +135,7 @@ locals {
       user_data = "user-data-sqlite.sh"
     },
     app-server-mysql = {
-      type      = "t3.xlarge"
+      type      = "t3.2xlarge"
       user_data = "user-data-mysql.sh"
     }
   }
